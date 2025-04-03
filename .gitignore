@@ -1,11 +1,25 @@
 # Зависимости
-../node_modules/
+node_modules/
 package-lock.json
 
-# Сборки
+# Сборка
 dist/
 build/
+.tmp/
+.sass-cache/
+
+# Настройки IDE
 .idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Логи
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Файлы окружения
 .env
@@ -14,27 +28,12 @@ build/
 .env.test
 .env.production
 
-# Логи
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Временные файлы
-.sass-cache/
-.tmp/
 temp/
 tmp/
-
-# Файлы редакторов
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
 *.swp
 
-# Файлы операционных систем
+# Файлы ОС
 .DS_Store
 .DS_Store?
 ._*
