@@ -1,0 +1,96 @@
+// ======================================
+// СЕТКА (GRID)
+// ======================================
+
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/breakpoints' as bp;
+@use 'sass:map';
+
+// Базовая сетка
+.grid {
+  display: grid;
+  gap: v.$spacing-md;
+
+  // Настройка количества колонок по умолчанию для разных экранов
+  grid-template-columns: 1fr;
+
+  @include mix.media(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mix.media(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mix.media(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  // Варианты размеров отступов
+  &--gap-sm {
+    gap: v.$spacing-sm;
+  }
+
+  &--gap-lg {
+    gap: v.$spacing-lg;
+  }
+
+  &--gap-xl {
+    gap: v.$spacing-xl;
+  }
+
+  // Варианты количества колонок
+  @for $i from 1 through 12 {
+    &--cols-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+
+  // Адаптивные варианты колонок
+  @each $breakpoint, $value in bp.$breakpoints {
+    @include mix.media($breakpoint) {
+      @for $i from 1 through 12 {
+        &--#{$breakpoint}-cols-#{$i} {
+          grid-template-columns: repeat($i, 1fr);
+        }
+      }
+    }
+  }
+}
+
+// Элемент сетки
+.grid-item {
+  grid-column: auto / span 1;
+
+  @for $i from 1 through 12 {
+    &--span-#{$i} {
+      grid-column: auto / span $i;
+    }
+  }
+
+  @each $breakpoint, $value in bp.$breakpoints {
+    @include mix.media($breakpoint) {
+      @for $i from 1 through 12 {
+        &--#{$breakpoint}-span-#{$i} {
+          grid-column: auto / span $i;
+        }
+      }
+    }
+  }
+}
+
+// Auto-fit grid
+.auto-grid {
+  display: grid;
+  gap: v.$spacing-md;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  &--sm {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  &--lg {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}

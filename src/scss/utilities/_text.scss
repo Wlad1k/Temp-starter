@@ -1,0 +1,275 @@
+// ======================================
+// ТИПОГРАФСКИЕ УТИЛИТЫ
+// ======================================
+
+@use 'sass:meta';
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/breakpoints' as bp;
+
+// Выравнивание текста
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Размер шрифта
+.text-xs {
+  font-size: v.$font-size-xs;
+}
+
+.text-sm {
+  font-size: v.$font-size-sm;
+}
+
+.text-md {
+  font-size: v.$font-size-md;
+}
+
+.text-lg {
+  font-size: v.$font-size-lg;
+}
+
+.text-xl {
+  font-size: v.$font-size-xl;
+}
+
+.text-2xl {
+  font-size: v.$font-size-2xl;
+}
+
+.text-3xl {
+  font-size: v.$font-size-3xl;
+}
+
+.text-4xl {
+  font-size: v.$font-size-4xl;
+}
+
+.text-5xl {
+  font-size: v.$font-size-5xl;
+}
+
+// Вес шрифта
+.font-light {
+  font-weight: v.$font-weight-light;
+}
+
+.font-normal {
+  font-weight: v.$font-weight-normal;
+}
+
+.font-medium {
+  font-weight: v.$font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: v.$font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: v.$font-weight-bold;
+}
+
+// Цвет текста
+.text-primary {
+  color: v.$color-primary;
+}
+
+.text-secondary {
+  color: v.$color-secondary;
+}
+
+.text-tertiary {
+  color: v.$color-tertiary;
+}
+
+.text-dark {
+  color: v.$color-dark;
+}
+
+.text-light {
+  color: v.$color-light;
+}
+
+@for $i from 1 through 9 {
+  .text-gray-#{$i}00 {
+    color: var(--color-gray-#{$i}00);
+  }
+}
+
+// Интервалы
+.leading-tight {
+  line-height: v.$line-height-tight;
+}
+
+.leading-normal {
+  line-height: v.$line-height-normal;
+}
+
+.leading-relaxed {
+  line-height: v.$line-height-relaxed;
+}
+
+// Трансформация текста
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+// Украшение текста
+.underline {
+  text-decoration: underline;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+// Обертка текста
+.break-normal {
+  overflow-wrap: normal;
+}
+
+.break-words {
+  overflow-wrap: break-word;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.truncate {
+  @include mix.truncate;
+}
+
+.line-clamp-2 {
+  @include mix.truncate(2);
+}
+
+.line-clamp-3 {
+  @include mix.truncate(3);
+}
+
+// Белое пространство
+.whitespace-normal {
+  white-space: normal;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.whitespace-pre {
+  white-space: pre;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+
+// Адаптивные классыv.
+@each $breakpoint, $value in bp.$breakpoints {
+  @include mix.media($breakpoint) {
+    // Адаптивное выравнивание
+    .#{$breakpoint}\:text-left {
+      text-align: left;
+    }
+
+    .#{$breakpoint}\:text-center {
+      text-align: center;
+    }
+
+    .#{$breakpoint}\:text-right {
+      text-align: right;
+    }
+
+    // Адаптивный размер шрифта
+    .#{$breakpoint}\:text-xs {
+      font-size: v.$font-size-xs;
+    }
+
+    .#{$breakpoint}\:text-sm {
+      font-size: v.$font-size-sm;
+    }
+
+    .#{$breakpoint}\:text-md {
+      font-size: v.$font-size-md;
+    }
+
+    .#{$breakpoint}\:text-lg {
+      font-size: v.$font-size-lg;
+    }
+
+    .#{$breakpoint}\:text-xl {
+      font-size: v.$font-size-xl;
+    }
+
+    .#{$breakpoint}\:text-2xl {
+      font-size: v.$font-size-2xl;
+    }
+
+    .#{$breakpoint}\:text-3xl {
+      font-size: v.$font-size-3xl;
+    }
+
+    .#{$breakpoint}\:text-4xl {
+      font-size: v.$font-size-4xl;
+    }
+
+    .#{$breakpoint}\:text-5xl {
+      font-size: v.$font-size-5xl;
+    }
+
+    // Адаптивный вес шрифта
+    .#{$breakpoint}\:font-light {
+      font-weight: v.$font-weight-light;
+    }
+
+    .#{$breakpoint}\:font-normal {
+      font-weight: v.$font-weight-normal;
+    }
+
+    .#{$breakpoint}\:font-medium {
+      font-weight: v.$font-weight-medium;
+    }
+
+    .#{$breakpoint}\:font-semibold {
+      font-weight: v.$font-weight-semibold;
+    }
+
+    .#{$breakpoint}\:font-bold {
+      font-weight: v.$font-weight-bold;
+    }
+  }
+}

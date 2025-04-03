@@ -1,0 +1,245 @@
+// ======================================
+// ТИПОГРАФИКА
+// ======================================
+
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/functions' as *;
+
+// Установка базовых стилей для body
+body {
+  font-family: v.$font-base;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-normal;
+  line-height: v.$line-height-normal;
+  color: v.$color-gray-900;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Заголовки
+h1, h2, h3, h4, h5, h6 {
+  font-family: v.$font-heading;
+  font-weight: v.$font-weight-bold;
+  line-height: v.$line-height-tight;
+  margin-bottom: v.$spacing-md;
+  color: v.$color-dark;
+}
+
+h1 {
+  font-size: v.$font-size-4xl;
+  margin-top: v.$spacing-2xl;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-5xl;
+  }
+}
+
+h2 {
+  font-size: v.$font-size-3xl;
+  margin-top: v.$spacing-xl;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-4xl;
+  }
+}
+
+h3 {
+  font-size: v.$font-size-2xl;
+  margin-top: v.$spacing-lg;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-3xl;
+  }
+}
+
+h4 {
+  font-size: v.$font-size-xl;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-2xl;
+  }
+}
+
+h5 {
+  font-size: v.$font-size-lg;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-xl;
+  }
+}
+
+h6 {
+  font-size: v.$font-size-md;
+
+  @include mix.media(md) {
+    font-size: v.$font-size-lg;
+  }
+}
+
+// Параграфы
+p {
+  margin-bottom: v.$spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Ссылки
+a {
+  color: v.$color-primary;
+  text-decoration: none;
+  transition: color v.$transition-fast v.$transition-timing;
+
+  &:hover {
+    color: shade(v.$color-primary, 15%);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(v.$color-primary, 0.4);
+  }
+}
+
+// Сильное выделениеv.
+strong, b {
+  font-weight: v.$font-weight-bold;
+}
+
+// Курсив
+em, i {
+  font-style: italic;
+}
+
+// Малый текст
+small {
+  font-size: v.$font-size-sm;
+}
+
+// Блочные цитаты
+blockquote {
+  margin: v.$spacing-lg 0;
+  padding: v.$spacing-md v.$spacing-lg;
+  border-left: v.$border-width-normal solid v.$color-gray-300;
+  color: v.$color-gray-700;
+  font-style: italic;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  cite {
+    display: block;
+    font-size: v.$font-size-sm;
+    margin-top: v.$spacing-sm;
+    font-style: normal;
+
+    &:before {
+      content: "— ";
+    }
+  }
+}
+
+// Списки
+ul, ol {
+  margin: 0 0 v.$spacing-md v.$spacing-lg;
+  padding: 0;
+
+  li {
+    margin-bottom: v.$spacing-xs;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Горизонтальная линия
+hr {
+  border: 0;
+  height: 1px;
+  background-color: v.$color-gray-300;
+  margin: v.$spacing-lg 0;
+}
+
+// Код
+code, pre {
+  font-family: v.$font-mono;
+  font-size: 0.9em;
+  border-radius: v.$border-radius-md;
+}
+
+code {
+  background-color: v.$color-gray-100;
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  background-color: v.$color-gray-100;
+  padding: v.$spacing-md;
+  margin: v.$spacing-md 0;
+  overflow-x: auto;
+  line-height: 1.6;
+
+  code {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+// Адресы
+address {
+  font-style: normal;
+  margin-bottom: v.$spacing-md;
+}
+
+// Подчеркнутый текст
+u, ins {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+// Выделенный текст
+mark {
+  background-color: rgba(v.$color-warning, 0.2);
+  padding: 0.1em 0.2em;
+}
+
+// Выделенный код
+kbd {
+  display: inline-block;
+  font-family: v.$font-mono;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  border-radius: v.$border-radius-sm;
+  background-color: v.$color-gray-100;
+  border: 1px solid v.$color-gray-400;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+// Аббревиатуры
+abbr[title] {
+  border-bottom: 1px dotted v.$color-gray-500;
+  cursor: help;
+}
+
+// Определения
+dt {
+  font-weight: v.$font-weight-bold;
+  margin-bottom: v.$spacing-xs;
+}
+
+dd {
+  margin-left: v.$spacing-lg;
+  margin-bottom: v.$spacing-md;
+}
+
+// Подписи
+figcaption {
+  font-size: v.$font-size-sm;
+  margin-top: v.$spacing-sm;
+  color: v.$color-gray-600;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCSS + Gulp Starter</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="mt-40 mb-40">
+        <h1 class="text-center">SCSS + Gulp Starter</h1>
+        <p class="text-center text-muted mb-20">Модульная и масштабируемая архитектура для современной фронтенд-разработки</p>
+        <div class="text-center">
+            <button id="theme-toggle" class="btn btn-outline theme-toggle">
+                Переключить тему
+            </button>
+        </div>
+    </header>
+
+    <section class="mb-40">
+        <h2 class="mb-20">Компоненты</h2>
+
+        <!-- Buttons -->
+        <div class="card mb-20">
+            <div class="card-header">
+                <h3>Кнопки</h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary mr-10 mb-10">Primary Button</button>
+                <button class="btn btn-secondary mr-10 mb-10">Secondary Button</button>
+                <button class="btn btn-outline mr-10 mb-10">Outline Button</button>
+                <button class="btn btn-primary btn-sm mr-10 mb-10">Small Button</button>
+                <button class="btn btn-primary btn-lg mb-10">Large Button</button>
+                <div class="mt-20">
+                    <button class="btn btn-primary btn-block mb-10">Block Button</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="card mb-20">
+            <div class="card-header">
+                <h3>Формы</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" placeholder="Введите имя">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Введите email">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="agree">
+                            <label for="agree">Я согласен с условиями</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row">
+            <div class="col-md-4 mb-20">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Карточка 1</h4>
+                        <p class="card-text">Пример использования компонента карточки с эффектом наведения.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-20">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Карточка 2</h4>
+                        <p class="card-text">Пример использования компонента карточки с эффектом наведения.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-20">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Карточка 3</h4>
+                        <p class="card-text">Пример использования компонента карточки с эффектом наведения.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-40">
+        <h2 class="mb-20">Сетка</h2>
+
+        <div class="row mb-20">
+            <div class="col-md-6 col-lg-3 mb-10">
+                <div class="p-20 bg-primary text-white text-center">Col 1</div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-10">
+                <div class="p-20 bg-secondary text-white text-center">Col 2</div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-10">
+                <div class="p-20 bg-primary text-white text-center">Col 3</div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-10">
+                <div class="p-20 bg-secondary text-white text-center">Col 4</div>
+            </div>
+        </div>
+
+        <h3 class="mb-20">Flexbox</h3>
+
+        <div class="d-flex justify-between align-center mb-20">
+            <div class="p-20 bg-primary text-white text-center" style="width: 100px;">Flex 1</div>
+            <div class="p-20 bg-secondary text-white text-center" style="width: 100px;">Flex 2</div>
+            <div class="p-20 bg-primary text-white text-center" style="width: 100px;">Flex 3</div>
+        </div>
+    </section>
+
+    <section class="mb-40">
+        <h2 class="mb-20">Утилиты</h2>
+
+        <h3 class="mb-10">Отступы</h3>
+        <div class="mb-20">
+            <div class="p-20 bg-primary text-white text-center mb-10">padding: 20px</div>
+            <div class="pt-20 bg-secondary text-white text-center mb-10">padding-top: 20px</div>
+            <div class="px-20 bg-primary text-white text-center">padding-left & padding-right: 20px</div>
+        </div>
+
+        <h3 class="mb-10">Текст</h3>
+        <div class="mb-20">
+            <p class="text-center mb-10">Текст по центру</p>
+            <p class="text-right mb-10">Текст справа</p>
+            <p class="font-bold">Жирный текст</p>
+        </div>
+    </section>
+</div>
+
+<script src="js/main.js"></script>
+<!-- Simple theme toggle script -->
+<script>
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    });
+</script>
+</body>
+</html>

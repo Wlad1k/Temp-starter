@@ -1,0 +1,100 @@
+/* ======================================
+   FORMS
+   ====================================== */
+
+@use '../config/variables' as v;
+
+/* Form group */
+.form-group {
+  margin-bottom: v.$spacing-unit * 2;
+}
+
+/* Form label */
+.form-label {
+  display: block;
+  margin-bottom: v.$spacing-unit;
+  font-weight: 500;
+  color: v.$color-dark;
+}
+
+/* Form controls */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: v.$spacing-unit * 1.25 v.$spacing-unit * 1.5;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: v.$color-dark;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: v.$font-base;
+
+  &:focus {
+    border-color: v.$color-primary;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(v.$color-primary, 0.25);
+  }
+
+  &::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+}
+
+/* Checkbox and radio */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: v.$spacing-unit;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: v.$spacing-unit;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+}
+
+/* Form validation */
+.is-valid {
+  border-color: #28a745;
+
+  &:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(#28a745, 0.25);
+  }
+}
+
+.is-invalid {
+  border-color: #dc3545;
+
+  &:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(#dc3545, 0.25);
+  }
+}
+
+.form-feedback {
+  display: block;
+  margin-top: v.$spacing-unit;
+  font-size: 0.875rem;
+
+  &.invalid-feedback {
+    color: #dc3545;
+  }
+
+  &.valid-feedback {
+    color: #28a745;
+  }
+}

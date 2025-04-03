@@ -1,0 +1,195 @@
+// ======================================
+// ФЛЕКС (FLEX)
+// ======================================
+
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/breakpoints' as bp;
+@use 'sass:math';
+
+
+// Базовый flex-контейнер
+.flex {
+  display: flex;
+
+  // Flex-direction
+  &--row {
+    flex-direction: row;
+  }
+
+  &--row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  // Flex-wrap
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  // Justify content
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-end {
+    justify-content: flex-end;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-between {
+    justify-content: space-between;
+  }
+
+  &--justify-around {
+    justify-content: space-around;
+  }
+
+  &--justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  // Align items
+  &--items-start {
+    align-items: flex-start;
+  }
+
+  &--items-end {
+    align-items: flex-end;
+  }
+
+  &--items-center {
+    align-items: center;
+  }
+
+  &--items-baseline {
+    align-items: baseline;
+  }
+
+  &--items-stretch {
+    align-items: stretch;
+  }
+
+  // Gap
+  &--gap-sm {
+    gap: v.$spacing-sm;
+  }
+
+  &--gap-md {
+    gap: v.$spacing-md;
+  }
+
+  &--gap-lg {
+    gap: v.$spacing-lg;
+  }
+
+  &--gap-xl {
+    gap: v.$spacing-xl;
+  }
+
+  // Часто используемые комбинации
+  &--center {
+    @include mix.flex-center;
+  }
+
+  &--column-center {
+    @include mix.flex-column-center;
+  }
+
+  &--between {
+    @include mix.flex-space-between;
+  }
+}
+
+// Flex-элемент
+.flex-item {
+  // Flex-grow
+  &--grow {
+    flex-grow: 1;
+  }
+
+  &--no-grow {
+    flex-grow: 0;
+  }
+
+  // Flex-shrink
+  &--shrink {
+    flex-shrink: 1;
+  }
+
+  &--no-shrink {
+    flex-shrink: 0;
+  }
+
+  // Предопределенные размеры
+  &--auto {
+    flex: 1 1 auto;
+  }
+
+  &--initial {
+    flex: 0 1 auto;
+  }
+
+  &--none {
+    flex: none;
+  }
+
+  &--full {
+    flex: 1 0 100%;
+  }
+
+  // Выравнивание
+  &--self-start {
+    align-self: flex-start;
+  }
+
+  &--self-end {
+    align-self: flex-end;
+  }
+
+  &--self-center {
+    align-self: center;
+  }
+
+  &--self-stretch {
+    align-self: stretch;
+  }
+
+  // Размеры (процентные)
+  @for $i from 1 through 12 {
+    $width: math.percentage(math.div($i, 12));
+
+    &--#{$i} {
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+  }
+
+  // Адаптивные размеры
+  @each $breakpoint, $value in bp.$breakpoints {
+    @include mix.media($breakpoint) {
+      @for $i from 1 through 12 {
+        $width: math.percentage(math.div($i, 12));
+
+        &--#{$breakpoint}-#{$i} {
+          flex: 0 0 $width;
+          max-width: $width;
+        }
+      }
+    }
+  }
+}

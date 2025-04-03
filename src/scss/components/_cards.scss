@@ -1,0 +1,78 @@
+/* ======================================
+   CARDS
+   ====================================== */
+
+@use '../config/variables' as v;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &.card-hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.card-header {
+  padding: v.$spacing-unit * 2;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+  &:first-child {
+    border-radius: calc(4px - 1px) calc(4px - 1px) 0 0;
+  }
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: v.$spacing-unit * 2;
+}
+
+.card-title {
+  margin-bottom: v.$spacing-unit * 1.5;
+  font-weight: 500;
+}
+
+.card-text {
+  margin-top: 0;
+  margin-bottom: v.$spacing-unit * 1.5;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  padding: v.$spacing-unit * 2;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+
+  &:last-child {
+    border-radius: 0 0 calc(4px - 1px) calc(4px - 1px);
+  }
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(4px - 1px);
+  border-top-right-radius: calc(4px - 1px);
+}
+
+.card-img-bottom {
+  width: 100%;
+  border-bottom-right-radius: calc(4px - 1px);
+  border-bottom-left-radius: calc(4px - 1px);
+}

@@ -1,0 +1,116 @@
+// ======================================
+// ОТСТУПЫ
+// ======================================
+
+@use 'sass:meta';
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/breakpoints' as bp;
+
+
+// Генерируем классы для отступов
+// m: margin
+// p: padding
+// t: top
+// r: right
+// b: bottom
+// l: left
+// x: горизонтальные (left и right)
+// y: вертикальные (top и bottom)
+// auto: auto margin
+
+// Список размеров отступов
+$spacing-sizes: (
+        '0': 0,
+        '1': v.$spacing-xxs, // 2px
+        '2': v.$spacing-xs,  // 4px
+        '3': v.$spacing-sm,  // 8px
+        '4': v.$spacing-md,  // 16px
+        '5': v.$spacing-lg,  // 24px
+        '6': v.$spacing-xl,  // 32px
+        '8': v.$spacing-2xl, // 48px
+        '10': v.$spacing-3xl, // 64px
+        '12': v.$spacing-4xl  // 96px
+);
+
+// Направления отступов
+$directions: (
+        't': 'top',
+        'r': 'right',
+        'b': 'bottom',
+        'l': 'left',
+        'x': ('right', 'left'),
+        'y': ('top', 'bottom'),
+        '': ('top', 'right', 'bottom', 'left')
+);
+
+// Типы отступов (margin, padding)
+$spacing-types: (
+        'm': 'margin',
+        'p': 'padding'
+);
+
+// Генерация классов отступов
+@each $type-key, $type-value in $spacing-types {
+  // Классы для всех размеров и направлений
+  @each $direction-key, $direction-value in $directions {
+    @each $size-key, $size-value in $spacing-sizes {
+      .#{$type-key}#{$direction-key}-#{$size-key} {
+        @if type-of($direction-value) == 'list' {
+          @each $dir in $direction-value {
+            #{$type-value}-#{$dir}: $size-value;
+          }
+        } @else {
+          #{$type-value}-#{$direction-value}: $size-value;
+        }
+      }
+    }
+
+    // Автоматические отступы (только для margin)
+    @if $type-key == 'm' {
+      .#{$type-key}#{$direction-key}-auto {
+        @if type-of($direction-value) == 'list' {
+          @each $dir in $direction-value {
+            #{$type-value}-#{$dir}: auto;
+          }
+        } @else {
+          #{$type-value}-#{$direction-value}: auto;
+        }
+      }
+    }
+  }
+}
+
+// Адаптивные классы отступов
+@each $breakpoint, $value in bp.$breakpoints {
+  @include mix.media($breakpoint) {
+    @each $type-key, $type-value in $spacing-types {
+      @each $direction-key, $direction-value in $directions {
+        @each $size-key, $size-value in $spacing-sizes {
+          .#{$breakpoint}\:#{$type-key}#{$direction-key}-#{$size-key} {
+            @if type-of($direction-value) == 'list' {
+              @each $dir in $direction-value {
+                #{$type-value}-#{$dir}: $size-value;
+              }
+            } @else {
+              #{$type-value}-#{$direction-value}: $size-value;
+            }
+          }
+        }
+
+        // Автоматические отступы для breakpoints
+        @if $type-key == 'm' {
+          .#{$breakpoint}\:#{$type-key}#{$direction-key}-auto {
+            @if type-of($direction-value) == 'list' {
+              @each $dir in $direction-value {
+                #{$type-value}-#{$dir}: auto;
+              }
+            } @else {
+              #{$type-value}-#{$direction-value}: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+// ======================================
+// КОНТЕЙНЕР
+// ======================================
+
+@use '../config/variables' as *;
+@use '../config/mixins' as *;
+
+// Основной контейнер
+// Центрированный контейнер с максимальной шириной и отступами
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  @include media(sm) {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+
+  @include media(lg) {
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
+  }
+
+  // Варианты размера контейнера
+  &--narrow {
+    max-width: $container-narrow;
+  }
+
+  &--wide {
+    max-width: $container-wide;
+  }
+
+  // Контейнер с полным заполнением
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+// Отзывчивый контейнер с отступами по умолчанию
+.content {
+  padding: $spacing-lg;
+
+  @include media(md) {
+    padding: $spacing-xl;
+  }
+
+  @include media(lg) {
+    padding: $spacing-2xl;
+  }
+}
+
+// Секция страницы
+.section {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+
+  @include media(md) {
+    padding-top: $spacing-2xl;
+    padding-bottom: $spacing-2xl;
+  }
+
+  @include media(lg) {
+    padding-top: $spacing-3xl;
+    padding-bottom: $spacing-3xl;
+  }
+
+  // Варианты секций
+  &--sm {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+
+    @include media(md) {
+      padding-top: $spacing-xl;
+      padding-bottom: $spacing-xl;
+    }
+  }
+
+  &--lg {
+    padding-top: $spacing-2xl;
+    padding-bottom: $spacing-2xl;
+
+    @include media(md) {
+      padding-top: $spacing-3xl;
+      padding-bottom: $spacing-3xl;
+    }
+
+    @include media(lg) {
+      padding-top: $spacing-4xl;
+      padding-bottom: $spacing-4xl;
+    }
+  }
+}

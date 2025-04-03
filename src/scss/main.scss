@@ -1,0 +1,31 @@
+/* ======================================
+   MAIN SCSS FILE
+   ====================================== */
+
+/* Config files */
+@use "config/variables" as v;
+@use "config/breakpoints" as bp;
+@use "config/mixins" as mixins;
+@use "config/functions" as fn;
+
+/* Base styles */
+@use "base/reset";
+@use "base/typography";
+
+/* Layout */
+@use "layout/container";
+@use "layout/grid";
+@use "layout/flex";
+
+/* Components */
+@use "components/buttons";
+@use "components/forms";
+@use "components/cards";
+
+/* Utilities */
+@use "utilities/spacing";
+@use "utilities/display";
+@use "utilities/text";
+
+/* Themes */
+@use "themes/light-dark";

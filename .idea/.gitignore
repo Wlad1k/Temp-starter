@@ -1,0 +1,43 @@
+# Зависимости
+../node_modules/
+package-lock.json
+
+# Сборки
+dist/
+build/
+
+# Файлы окружения
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Временные файлы
+.sass-cache/
+.tmp/
+temp/
+tmp/
+
+# Файлы редакторов
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# Файлы операционных систем
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

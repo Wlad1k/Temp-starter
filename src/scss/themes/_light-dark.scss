@@ -1,0 +1,80 @@
+/* ======================================
+   THEMES - LIGHT & DARK
+   ====================================== */
+
+@use '../config/variables' as v;
+
+
+// Default variables for light theme
+:root {
+  // Colors
+  --color-bg: #ffffff;
+  --color-text: #{v.$color-dark};
+  --color-text-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-card-bg: #ffffff;
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --color-input-bg: #ffffff;
+  --color-input-border: #ced4da;
+
+  // Theme-specific variables
+  --color-primary: #{v.$color-primary};
+  --color-secondary: #{v.$color-dark};
+}
+
+// Dark theme variables
+@mixin dark-theme {
+  --color-bg: #121212;
+  --color-text: #f8f9fa;
+  --color-text-muted: #adb5bd;
+  --color-border: #2d3748;
+  --color-card-bg: #1e1e1e;
+  --color-card-shadow: rgba(0, 0, 0, 0.2);
+  --color-input-bg: #2d3748;
+  --color-input-border: #4a5568;
+}
+
+// Apply dark theme based on user preference or manual toggle
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-theme;
+  }
+}
+
+[data-theme="dark"] {
+  @include dark-theme;
+}
+
+// Apply theme variables to elements
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+// Card theme support
+.card {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 4px var(--color-card-shadow);
+}
+
+// Form controls theme support
+.form-control {
+  background-color: var(--color-input-bg);
+  border-color: var(--color-input-border);
+  color: var(--color-text);
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+}
+
+// Theme toggle functionality
+.theme-toggle {
+  cursor: pointer;
+  padding: v.$spacing-unit;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

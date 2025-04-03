@@ -1,0 +1,47 @@
+{
+  "name": "scss-gulp-starter",
+  "version": "1.0.0",
+  "description": "Модульный и масштабируемый стартер для фронтенд-разработки с SCSS-архитектурой и Gulp-сборкой",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npx npm-force-resolutions",
+    "dev": "gulp",
+    "build": "gulp build --prod",
+    "lint": "stylelint '**/*.scss' --fix"
+  },
+  "keywords": [
+    "scss",
+    "gulp",
+    "starter",
+    "frontend",
+    "bem"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "browser-sync": "^2.29.3",
+    "cssnano": "^6.0.1",
+    "del": "^6.1.1",
+    "gulp": "^4.0.2",
+    "gulp-dart-sass": "^1.1.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.31",
+    "sass": "^1.72.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-scss": "^5.2.1",
+    "npm-force-resolutions": "^0.0.10"
+  },
+  "resolutions": {
+    "sass": "1.72.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
+}

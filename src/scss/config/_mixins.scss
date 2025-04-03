@@ -1,0 +1,176 @@
+// ======================================
+// МИКСИНЫ
+// ======================================
+
+@use 'sass:math';
+@use 'sass:map';
+@use './breakpoints' as bp;
+
+// Media query миксин для адаптивного дизайна
+// ----------------------------------------
+// Использование: @include media(md) { ... }
+@mixin media($breakpoint) {
+  @if map.has-key(bp.$breakpoints, $breakpoint) {
+    $value: map.get(bp.$breakpoints, $breakpoint);
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "Точка перелома `#{$breakpoint}` не найдена в `$breakpoints`.";
+  }
+}
+
+// Flex утилиты
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Адаптивная типографика
+@mixin adaptive-font($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: $min-size;
+
+  @media (min-width: $min-width) {
+    font-size: calc(
+            #{$min-size} + #{strip-unit($max-size - $min-size)} *
+            ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
+    );
+  }
+
+  @media (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+// Удаление единиц измерения
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  @return $number;
+}
+
+// Grid утилиты
+@mixin grid-columns($columns: 3, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-masonry($columns: 3, $gap: 1rem) {
+  columns: $columns;
+  column-gap: $gap;
+
+  > * {
+    break-inside: avoid;
+    margin-bottom: $gap;
+  }
+}
+
+// Вспомогательные миксины
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin arrow($direction: 'down', $size: 8px, $color: currentColor) {
+  border: solid $color;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: $size;
+
+  @if $direction == 'down' {
+    transform: rotate(45deg);
+  } @else if $direction == 'up' {
+    transform: rotate(-135deg);
+  } @else if $direction == 'right' {
+    transform: rotate(-45deg);
+  } @else if $direction == 'left' {
+    transform: rotate(135deg);
+  }
+}
+
+@mixin triangle($direction: 'up', $size: 10px, $color: currentColor) {
+  width: 0;
+  height: 0;
+
+  @if $direction == 'up' {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  } @else if $direction == 'down' {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+  } @else if $direction == 'right' {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if $direction == 'left' {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: percentage(math.div($height, $width));
+  }
+
+  > * {
+    @include absolute-fill;
+  }
+}

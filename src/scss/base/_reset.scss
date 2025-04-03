@@ -1,0 +1,118 @@
+// ======================================
+// MODERN CSS RESET
+// ======================================
+
+// Box sizing
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Удаление отступов body
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+// Установка явного наследования для body
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+// Упрощение стилизации списка
+ul[role="list"],
+ol[role="list"],
+ul:where(:not([class])),
+ol:where(:not([class])) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Элементы с классами не должны быть затронуты стилями для элементов без классов
+ul:where(:not([class])) li,
+ol:where(:not([class])) li {
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+}
+
+// Лучший поток для изображений
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+// Наследование шрифтов для полей форм
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Удаление полей и стилей для fieldset
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+// Отключаем анимации и переходы для пользователей с настройкой reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Скрытие видимых только для скринридеров элементов
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Сглаживание шрифтов
+html,
+input,
+button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Поведение фокуса
+:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+// Скрытие фокуса для мыши
+:focus:not(:focus-visible) {
+  outline: none;
+}

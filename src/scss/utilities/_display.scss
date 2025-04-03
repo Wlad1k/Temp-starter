@@ -1,0 +1,106 @@
+// ======================================
+// КЛАССЫ ОТОБРАЖЕНИЯ
+// ======================================
+
+@use 'sass:meta';
+@use '../config/variables' as v;
+@use '../config/mixins' as mix;
+@use '../config/breakpoints' as bp;
+
+// Доступные значения свойства display
+$display-values: (
+        'block': block,
+        'inline': inline,
+        'inline-block': inline-block,
+        'flex': flex,
+        'inline-flex': inline-flex,
+        'grid': grid,
+        'inline-grid': inline-grid,
+        'table': table,
+        'table-cell': table-cell,
+        'table-row': table-row,
+        'none': none
+);
+
+// Базовые классы display
+@each $name, $value in $display-values {
+  .d-#{$name} {
+    display: $value;
+  }
+}
+
+// Видимость
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+// Непрозрачность
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-25 {
+  opacity: 0.25;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-75 {
+  opacity: 0.75;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+// Скрытие для скринридеров
+.sr-only {
+  @include mix.visually-hidden;
+}
+
+// Адаптивные классы display
+@each $breakpoint, $value in bp.$breakpoints {
+  @include mix.media($breakpoint) {
+    @each $name, $display-value in $display-values {
+      .#{$breakpoint}\:d-#{$name} {
+        display: $display-value;
+      }
+    }
+
+    // Адаптивные классы видимости
+    .#{$breakpoint}\:visible {
+      visibility: visible;
+    }
+
+    .#{$breakpoint}\:invisible {
+      visibility: hidden;
+    }
+
+    // Адаптивные классы непрозрачности
+    .#{$breakpoint}\:opacity-0 {
+      opacity: 0;
+    }
+
+    .#{$breakpoint}\:opacity-25 {
+      opacity: 0.25;
+    }
+
+    .#{$breakpoint}\:opacity-50 {
+      opacity: 0.5;
+    }
+
+    .#{$breakpoint}\:opacity-75 {
+      opacity: 0.75;
+    }
+
+    .#{$breakpoint}\:opacity-100 {
+      opacity: 1;
+    }
+  }
+}

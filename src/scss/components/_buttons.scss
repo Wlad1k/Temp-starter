@@ -1,0 +1,89 @@
+/* ======================================
+   BUTTONS
+   ====================================== */
+
+@use '../config/variables' as v;
+@use 'sass:color';
+
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-unit * 1.5 v.$spacing-unit * 3;
+  border-radius: 4px;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: v.$font-base;
+
+  &:focus {
+    outline: 2px solid rgba(v.$color-primary, 0.5);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  .icon {
+    margin-right: v.$spacing-unit;
+
+    &:last-child:not(:first-child) {
+      margin-right: 0;
+      margin-left: v.$spacing-unit;
+    }
+  }
+}
+
+/* Button variants */
+.btn-primary {
+  background-color: v.$color-primary;
+  color: white;
+
+  &:hover {
+    background-color: color.adjust(v.$color-primary, $lightness: -10%);
+  }
+}
+
+.btn-secondary {
+  background-color: v.$color-dark;
+  color: white;
+
+  &:hover {
+    background-color: color.adjust(v.$color-dark, $lightness: -10%);
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid v.$color-primary;
+  color: v.$color-primary;
+
+  &:hover {
+    background-color: v.$color-primary;
+    color: white;
+  }
+}
+
+/* Button sizes */
+.btn-sm {
+  padding: v.$spacing-unit v.$spacing-unit * 2;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: v.$spacing-unit * 2 v.$spacing-unit * 4;
+  font-size: 1.125rem;
+}
+
+/* Button widths */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
