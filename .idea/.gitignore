@@ -5,6 +5,7 @@ package-lock.json
 # Сборки
 dist/
 build/
+.idea/
 
 # Файлы окружения
 .env

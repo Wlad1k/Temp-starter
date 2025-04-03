@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ca971d-5195-4294-bfbf-07e5a0f56bd4" name="Changes" comment="test" />
+    <list default="true" id="c4ca971d-5195-4294-bfbf-07e5a0f56bd4" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Wlad1k"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Wlad1k/Temp-starter",
+    "accountId": "17b7d471-6577-493f-b128-274aa84c4bfa"
+  }
+}]]></component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
@@ -74,7 +89,7 @@
       <updated>1743584210670</updated>
       <workItem from="1743584211767" duration="10630000" />
       <workItem from="1743651668390" duration="5455000" />
-      <workItem from="1743659865149" duration="968000" />
+      <workItem from="1743659865149" duration="1466000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
